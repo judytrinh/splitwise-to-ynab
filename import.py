@@ -19,7 +19,8 @@ access_token = sys.argv[2]
 account_id = sys.argv[3]
 date_start = datetime.strptime(sys.argv[4],"%Y-%m-%d").date()
 date_end = datetime.today().date()
-if len(sys.argv) >= 4:
+
+if len(sys.argv) > 5:
   date_end = datetime.strptime(sys.argv[5], "%Y-%m-%d").date()
 
 print(f"Importing Splitwise transactions starting from {date_start} to {date_end} inclusive from {csv_file}")
@@ -56,7 +57,6 @@ with open(csv_file, newline='') as csvfile:
         "cleared": "cleared",
         "approved": False
       })
-      break
 
 headers = {
   'Accept': 'application/json',
